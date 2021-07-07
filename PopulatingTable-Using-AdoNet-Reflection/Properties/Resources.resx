@@ -1,0 +1,641 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ConnectionString" xml:space="preserve">
+    <value>data source = .\SQLEXPRESS; initial catalog = cardb; integrated security = SSPI;</value>
+  </data>
+  <data name="MasterConnectionString" xml:space="preserve">
+    <value>data source = .\SQLEXPRESS; integrated security = SSPI;</value>
+  </data>
+  <data name="SchemaQuery" xml:space="preserve">
+    <value>IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'cardb')
+	BEGIN
+	CREATE DATABASE cardb;
+	END
+	USE cardb;
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='cars' and xtype='U')
+BEGIN
+    CREATE TABLE cars(id INT NOT NULL IDENTITY(1,1) PRIMARY KEY, Vendor NVARCHAR(255), Model NVARCHAR(255), Engine DECIMAL(2,1), Year INT);
+END
+IF NOT EXISTS(SELECT * FROM cars)
+BEGIN
+insert into cars (Vendor, Model, Year, Engine) values ('Land Rover', 'Range Rover', 2015, 1.4);
+insert into cars (Vendor, Model, Year, Engine) values ('GMC', 'Suburban 2500', 2017, 2.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Toyota', 'Corolla', 1991, 2.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Durango', 2015, 2.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Avalanche', 2004, 2.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Land Rover', 'Discovery', 2006, 2.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Lincoln', 'Navigator', 2006, 4.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'TrailBlazer', 2013, 1.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Volkswagen', 'Passat', 2001, 3.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Volkswagen', 'Touareg 2', 2020, 4.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'E-Series', 2004, 2.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Suzuki', 'Grand Vitara', 1990, 3.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Chrysler', 'Prowler', 2008, 4.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercedes-Benz', 'M-Class', 2000, 4.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Aston Martin', 'DB9', 1998, 2.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Lumina', 2005, 1.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercury', 'Sable', 1998, 2.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercedes-Benz', 'G-Class', 1991, 2.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Lamborghini', 'Countach', 2016, 1.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Alfa Romeo', '164', 2006, 1.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Suzuki', 'Grand Vitara', 2007, 1.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Subaru', 'Forester', 1992, 3.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Oldsmobile', 'Cutlass Supreme', 2008, 2.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Chrysler', 'Sebring', 2011, 4.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Honda', 'Fit', 2003, 1.1);
+insert into cars (Vendor, Model, Year, Engine) values ('GMC', 'Suburban 1500', 2010, 3.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercedes-Benz', 'Sprinter', 2012, 3.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Land Rover', 'Discovery', 2011, 1.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercury', 'Grand Marquis', 2001, 4.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Ram', '2500', 2013, 1.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Land Rover', 'Range Rover', 2000, 3.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Audi', 'Allroad', 2015, 1.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'Taurus', 2008, 3.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Isuzu', 'VehiCROSS', 2017, 4.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Nissan', 'Frontier', 1997, 1.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Toyota', 'Prius', 2018, 3.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Ram 3500', 2004, 3.7);
+insert into cars (Vendor, Model, Year, Engine) values ('GMC', 'Sierra 1500', 2002, 2.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Sportvan G20', 1992, 3.3);
+insert into cars (Vendor, Model, Year, Engine) values ('BMW', '5 Series', 2015, 4.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Stratus', 1994, 1.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'F150', 1999, 4.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Audi', '100', 2008, 3.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Cadillac', 'DTS', 2009, 2.2);
+insert into cars (Vendor, Model, Year, Engine) values ('BMW', 'X5 M', 2004, 4.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Avenger', 2011, 3.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercury', 'Sable', 2001, 3.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Acura', 'RL', 2003, 1.2);
+insert into cars (Vendor, Model, Year, Engine) values ('BMW', '8 Series', 2006, 2.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Suzuki', 'SX4', 2003, 2.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Toyota', 'Highlander', 2020, 3.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Grand Caravan', 1990, 2.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Toyota', 'MR2', 2010, 4.0);
+insert into cars (Vendor, Model, Year, Engine) values ('GMC', 'Canyon', 2001, 3.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Mitsubishi', 'Montero', 1994, 4.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Mitsubishi', 'Chariot', 1990, 3.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Nissan', 'Xterra', 2014, 4.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Pontiac', 'Grand Prix', 2014, 1.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Ram 3500', 2006, 2.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Hummer', 'H2', 2005, 4.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Toyota', 'Yaris', 2009, 4.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'Taurus', 2003, 3.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'Explorer', 2011, 4.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Honda', 'Odyssey', 1997, 4.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Mitsubishi', 'Mighty Max', 2000, 1.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Oldsmobile', 'Aurora', 2001, 3.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Buick', 'Regal', 2012, 3.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Cadillac', 'Escalade ESV', 2015, 1.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Dakota Club', 2004, 4.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Volkswagen', 'Jetta', 1993, 2.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Grand Caravan', 2018, 1.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Mazda', 'Mazdaspeed 3', 2019, 1.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Mitsubishi', 'Lancer', 2009, 4.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Lexus', 'HS', 1996, 2.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Mitsubishi', 'Tredia', 1993, 3.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Infiniti', 'M', 2005, 2.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercedes-Benz', '500E', 2008, 2.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Volkswagen', 'Golf', 1993, 1.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'F-Series', 1995, 1.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Ram 2500', 2020, 3.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'Mustang', 2020, 4.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Land Rover', 'Range Rover Sport', 1993, 4.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Nissan', 'Maxima', 2003, 1.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Toyota', 'Sienna', 1997, 1.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Caravan', 2012, 4.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercury', 'Mystique', 2014, 4.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'Edge', 2003, 1.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Porsche', '928', 2017, 4.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Panoz', 'Esperante', 2014, 4.2);
+insert into cars (Vendor, Model, Year, Engine) values ('GMC', 'Savana 1500', 2010, 1.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Volvo', 'V40', 2010, 3.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Suburban 1500', 2002, 1.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Foose', 'Hemisfear', 2006, 1.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'Aerostar', 1990, 1.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Lexus', 'SC', 1999, 2.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Honda', 'Prelude', 1998, 3.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Suzuki', 'Grand Vitara', 2009, 1.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Acura', 'RSX', 2011, 2.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Impala SS', 1992, 2.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Infiniti', 'M', 1998, 3.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Express 1500', 1994, 3.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Mitsubishi', 'Lancer Evolution', 1991, 3.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Saturn', 'Relay', 1999, 1.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Volvo', 'C30', 2001, 2.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Volkswagen', 'Routan', 2012, 4.0);
+insert into cars (Vendor, Model, Year, Engine) values ('GMC', 'Yukon', 1993, 2.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'Fiesta', 1996, 2.8);
+insert into cars (Vendor, Model, Year, Engine) values ('GMC', 'Sonoma Club Coupe', 2010, 3.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercury', 'Milan', 2020, 1.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Buick', 'Century', 1996, 3.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Blazer', 2005, 1.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Aston Martin', 'DBS', 2000, 4.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Hyundai', 'Santa Fe', 2019, 3.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Volvo', 'S40', 2004, 1.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercedes-Benz', '300SD', 2004, 4.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Suzuki', 'Vitara', 1996, 2.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Cadillac', 'Escalade', 2003, 3.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Cadillac', 'Escalade EXT', 1991, 1.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Buick', 'Rendezvous', 2013, 2.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Mitsubishi', 'Chariot', 2014, 2.2);
+insert into cars (Vendor, Model, Year, Engine) values ('BMW', '325', 2008, 4.4);
+insert into cars (Vendor, Model, Year, Engine) values ('BMW', '5 Series', 2009, 1.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Jaguar', 'XJ Series', 2000, 3.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercedes-Benz', 'S-Class', 1999, 1.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Caravan', 1995, 3.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercedes-Benz', 'CLK-Class', 2009, 1.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Volvo', 'XC90', 2001, 3.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Lincoln', 'Continental', 1998, 2.1);
+insert into cars (Vendor, Model, Year, Engine) values ('GMC', 'Yukon XL 2500', 2010, 4.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'APV', 2013, 3.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Buick', 'Reatta', 2005, 2.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Pontiac', 'Fiero', 2015, 3.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Kia', 'Rio', 1992, 2.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Pontiac', 'Parisienne', 1993, 2.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Ram 3500 Club', 2009, 2.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Toyota', 'Camry', 2020, 2.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Bentley', 'Arnage', 2005, 2.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Subaru', 'Loyale', 2009, 2.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Infiniti', 'G', 1998, 3.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Stealth', 2007, 4.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Volkswagen', 'Eurovan', 1991, 2.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercedes-Benz', '300D', 1990, 2.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Nissan', 'Armada', 2019, 2.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Toyota', 'Avalon', 2012, 2.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Volkswagen', 'Golf', 2020, 4.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Ram Van 2500', 1992, 3.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Cadillac', 'Fleetwood', 2006, 4.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Subaru', 'Justy', 1999, 1.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercedes-Benz', 'SL-Class', 2019, 2.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'Ranger', 2014, 1.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercury', 'Topaz', 1993, 3.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Honda', 'Ridgeline', 2012, 4.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Lexus', 'LX', 1999, 1.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Lexus', 'RX', 2017, 1.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Volkswagen', 'R32', 2014, 4.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Camaro', 1994, 4.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Pontiac', 'Grand Prix', 2015, 1.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Saab', '900', 1993, 1.7);
+insert into cars (Vendor, Model, Year, Engine) values ('BMW', '7 Series', 2014, 1.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercedes-Benz', 'S-Class', 1997, 1.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Volkswagen', 'Rabbit', 1997, 1.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Nissan', 'Pathfinder', 2016, 2.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercedes-Benz', 'E-Class', 2012, 2.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Jaguar', 'XJ', 1998, 1.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Porsche', 'Cayman', 1997, 4.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Honda', 'Prelude', 2005, 3.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Chrysler', 'New Yorker', 1994, 3.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Kia', 'Optima', 2018, 3.7);
+insert into cars (Vendor, Model, Year, Engine) values ('GMC', 'Savana 3500', 1990, 2.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Volkswagen', 'Golf', 1991, 3.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Silverado 3500', 1990, 4.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercury', 'Sable', 1990, 2.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Oldsmobile', 'Bravada', 2015, 1.8);
+insert into cars (Vendor, Model, Year, Engine) values ('BMW', 'M3', 1990, 1.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'F-Series', 2003, 2.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Kia', 'Sorento', 2016, 4.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Volkswagen', 'Jetta III', 2012, 1.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'E250', 2001, 2.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercury', 'Montego', 2014, 2.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Lexus', 'IS', 2019, 4.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Lamborghini', 'Gallardo', 2001, 1.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Cadillac', 'SRX', 1997, 3.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Maserati', 'GranTurismo', 2006, 5.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'F150', 2016, 4.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Cadillac', 'SRX', 2018, 4.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Stratus', 2014, 4.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Spyker', 'C8 Laviolette', 2017, 2.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'G-Series 1500', 2011, 4.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Subaru', 'Baja', 2010, 3.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercedes-Benz', 'SL-Class', 2004, 3.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'Mustang', 1999, 4.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Ram Van 1500', 2012, 4.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Toyota', 'Avalon', 2007, 4.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Hyundai', 'Elantra', 2002, 3.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Volkswagen', 'Golf', 2013, 1.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Acura', 'MDX', 1997, 1.3);
+insert into cars (Vendor, Model, Year, Engine) values ('GMC', 'Savana', 2014, 3.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercedes-Benz', 'E-Class', 2018, 4.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Aston Martin', 'V12 Vantage', 2001, 2.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercury', 'Monterey', 2015, 3.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Lexus', 'SC', 2012, 1.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Toyota', 'Camry', 2002, 3.7);
+insert into cars (Vendor, Model, Year, Engine) values ('GMC', '2500', 2020, 2.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Stratus', 2009, 3.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Lotus', 'Exige', 1999, 4.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Dakota Club', 2005, 1.2);
+insert into cars (Vendor, Model, Year, Engine) values ('GMC', 'Acadia', 1992, 3.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Buick', 'Skylark', 2011, 3.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Mazda', 'MX-3', 2008, 4.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Hyundai', 'Entourage', 2007, 1.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Porsche', 'Boxster', 1993, 1.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Silverado 2500', 2019, 3.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Nissan', 'JUKE', 2002, 1.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Lincoln', 'Town Car', 2006, 2.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Subaru', 'Tribeca', 1997, 4.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Mitsubishi', 'Starion', 2004, 2.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercedes-Benz', 'M-Class', 2016, 2.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Audi', 'S8', 1990, 1.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Pontiac', 'Sunfire', 1990, 3.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'Probe', 2013, 4.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Honda', 'S2000', 2014, 4.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercedes-Benz', 'R-Class', 2018, 4.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Hyundai', 'Santa Fe', 2018, 1.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'Tempo', 2003, 2.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Volkswagen', 'Type 2', 2001, 3.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Lumina', 1992, 3.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Nitro', 2005, 2.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Hyundai', 'Sonata', 2013, 1.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Pontiac', 'Montana SV6', 1992, 2.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Lincoln', 'Blackwood', 1991, 4.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Mazda', 'B-Series', 2016, 3.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Volkswagen', 'Passat', 2010, 3.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Pontiac', 'Sunbird', 1995, 4.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Volkswagen', 'CC', 2014, 4.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Ramcharger', 2016, 2.8);
+insert into cars (Vendor, Model, Year, Engine) values ('BMW', 'X3', 2005, 2.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Lotus', 'Elise', 2020, 1.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Mitsubishi', 'Tredia', 1991, 1.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Volkswagen', 'Touareg', 1993, 4.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Toyota', 'Tercel', 2003, 1.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Uplander', 1993, 5.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Oldsmobile', 'LSS', 1993, 4.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Plymouth', 'Voyager', 2014, 3.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercury', 'Cougar', 2017, 1.4);
+insert into cars (Vendor, Model, Year, Engine) values ('GMC', 'Sonoma', 1998, 1.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Porsche', 'Boxster', 2007, 2.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Isuzu', 'i-Series', 2009, 2.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'F-Series', 2016, 1.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Hyundai', 'Santa Fe', 2014, 3.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Buick', 'Regal', 2013, 3.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercury', 'Sable', 1991, 3.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Saturn', 'Ion', 2010, 4.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Infiniti', 'G25', 1992, 2.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Buick', 'Century', 2004, 3.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Porsche', '944', 1991, 3.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Oldsmobile', 'Bravada', 2003, 4.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Cadillac', 'Seville', 2014, 3.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Kia', 'Optima', 2006, 4.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Pontiac', 'Gemini', 2014, 4.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Mitsubishi', 'Challenger', 1990, 2.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', '2500', 2015, 3.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Land Rover', 'Range Rover Sport', 2017, 1.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercury', 'Capri', 2006, 1.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Subaru', 'Legacy', 1995, 3.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Lamborghini', 'Diablo', 2020, 1.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Volkswagen', 'Jetta', 2010, 2.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Chrysler', 'Town &amp; Country', 2009, 3.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Subaru', 'Tribeca', 2016, 1.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercedes-Benz', 'SLS AMG', 1999, 2.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Camaro', 1992, 1.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'S10', 1990, 1.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Nissan', 'Frontier', 1995, 2.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Honda', 'Odyssey', 2003, 4.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Lexus', 'GS', 1994, 1.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Volkswagen', 'Cabriolet', 1990, 1.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Pontiac', 'Bonneville', 2004, 4.9);
+insert into cars (Vendor, Model, Year, Engine) values ('BMW', '7 Series', 2008, 2.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Audi', '80', 2015, 1.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'Tempo', 1995, 3.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Ram Wagon B150', 2016, 3.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Cavalier', 2001, 1.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Ram 3500', 2013, 4.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'Explorer', 2019, 1.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'Crown Victoria', 2002, 4.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Maserati', 'Biturbo', 1996, 1.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Pontiac', 'Vibe', 2003, 1.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercedes-Benz', 'CL-Class', 1997, 3.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Rolls-Royce', 'Phantom', 2008, 4.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Ram Van B350', 2017, 3.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Mazda', 'Miata MX-5', 2013, 1.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Scion', 'xB', 1999, 4.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Lexus', 'SC', 1993, 3.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Caravan', 2016, 4.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'D150 Club', 2007, 3.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Mazda', '626', 1991, 3.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Hyundai', 'Sonata', 2018, 4.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Land Rover', 'Discovery Series II', 2008, 4.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Volvo', 'V50', 2009, 3.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Mazda', 'MPV', 2000, 1.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Cadillac', 'Seville', 2007, 1.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Acura', 'ZDX', 2005, 1.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Honda', 'Insight', 1992, 1.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Silverado', 2018, 4.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Maserati', 'Biturbo', 2006, 4.4);
+insert into cars (Vendor, Model, Year, Engine) values ('BMW', '760', 2015, 3.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Acura', 'SLX', 2010, 1.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Chrysler', 'PT Cruiser', 1992, 3.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Cadillac', 'STS', 2012, 4.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Plymouth', 'Grand Voyager', 2012, 3.9);
+insert into cars (Vendor, Model, Year, Engine) values ('BMW', 'Z4', 2003, 3.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Ram 3500', 2012, 1.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Volkswagen', 'Cabriolet', 2001, 3.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Corvette', 2017, 4.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Audi', 'A4', 2013, 2.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Hyundai', 'Accent', 2010, 4.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Mitsubishi', 'RVR', 1997, 1.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Mazda', 'MX-6', 2014, 1.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Oldsmobile', '88', 2000, 2.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Saturn', 'Astra', 1995, 2.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Cadillac', 'Fleetwood', 2017, 3.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Mitsubishi', 'Chariot', 2006, 5.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'Econoline E150', 2017, 1.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Audi', '4000CS Quattro', 1992, 4.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Suburban 1500', 1991, 3.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Silverado 1500', 1999, 2.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Silverado 2500', 2003, 4.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Cadillac', 'Escalade', 2020, 4.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Hummer', 'H3', 2002, 3.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Rolls-Royce', 'Ghost', 1999, 2.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'S10', 2011, 4.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Land Rover', 'Freelander', 2001, 3.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Mitsubishi', 'Galant', 2017, 3.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Kia', 'Sportage', 2008, 3.9);
+insert into cars (Vendor, Model, Year, Engine) values ('BMW', '3 Series', 2002, 3.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Metro', 1991, 1.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Land Rover', 'Range Rover Evoque', 1997, 4.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Acura', 'RL', 2015, 3.6);
+insert into cars (Vendor, Model, Year, Engine) values ('GMC', 'Sonoma', 1990, 1.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Cadillac', 'Escalade EXT', 2003, 2.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Silverado 3500', 2012, 3.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Lincoln', 'Aviator', 1997, 3.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Plymouth', 'Voyager', 1995, 4.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'Expedition', 2020, 2.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Audi', 'S6', 1997, 2.5);
+insert into cars (Vendor, Model, Year, Engine) values ('GMC', 'Sierra 1500', 2000, 3.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Pontiac', '6000', 1992, 3.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Pontiac', 'Bonneville', 2010, 3.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Infiniti', 'M', 2004, 2.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Audi', 'S4', 1996, 2.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Caravan', 1990, 1.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Audi', 'A7', 2009, 1.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Honda', 'Accord', 2017, 4.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Nissan', 'Frontier', 1999, 3.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Toyota', 'Supra', 2019, 3.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Volkswagen', 'Passat', 2017, 4.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'Thunderbird', 2018, 1.4);
+insert into cars (Vendor, Model, Year, Engine) values ('BMW', 'X6', 2020, 4.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Maserati', 'Gran Sport', 1994, 4.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Toyota', 'Corolla', 2003, 1.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercury', 'Mountaineer', 2003, 4.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Honda', 'CR-X', 2014, 3.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Maserati', 'Quattroporte', 1994, 1.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Mitsubishi', 'Montero', 1999, 4.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Spyker', 'C8 Spyder Wide Body', 2019, 3.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Infiniti', 'G', 2017, 3.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Jeep', 'Cherokee', 2003, 1.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Beretta', 2000, 4.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Volvo', 'V70', 1998, 2.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'G-Series 1500', 2009, 3.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Suzuki', 'Grand Vitara', 2016, 1.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Equinox', 2012, 2.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'D150 Club', 2002, 5.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Toyota', 'Avalon', 1995, 2.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Mazda', 'Tribute', 2002, 4.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Impala', 2001, 4.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Honda', 'CR-V', 1992, 3.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercury', 'Sable', 1998, 1.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'F350', 1990, 1.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Mazda', 'Miata MX-5', 2008, 2.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Honda', 'Accord', 2017, 2.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Audi', 'A4', 2016, 1.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Cadillac', 'Escalade ESV', 2016, 3.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Lotus', 'Esprit', 2006, 1.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Pontiac', 'Sunfire', 2020, 5.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Jaguar', 'XF', 2015, 3.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Mazda', 'B-Series Plus', 2014, 2.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Ram', 2003, 1.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Tesla', 'Roadster', 1999, 3.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', '3500', 1997, 3.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Buick', 'Estate', 2014, 3.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'LTD Crown Victoria', 1991, 4.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Corvette', 2007, 3.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Renault', 'Alliance', 2001, 5.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'Fusion', 2005, 1.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Hyundai', 'Azera', 1991, 3.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Pontiac', 'Montana SV6', 2014, 1.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Cadillac', 'Catera', 2009, 1.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'F-Series', 2019, 2.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Honda', 'CR-X', 2007, 2.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercury', 'Mountaineer', 2009, 1.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'Taurus', 1995, 5.0);
+insert into cars (Vendor, Model, Year, Engine) values ('GMC', 'Safari', 2015, 1.8);
+insert into cars (Vendor, Model, Year, Engine) values ('BMW', '8 Series', 2003, 4.4);
+insert into cars (Vendor, Model, Year, Engine) values ('BMW', '530', 2011, 3.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Toyota', 'Echo', 1991, 3.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Durango', 1996, 3.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Honda', 'CR-V', 2006, 4.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'Festiva', 1998, 3.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Maserati', 'Quattroporte', 1997, 4.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Silverado 2500', 2010, 4.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Buick', 'Century', 1992, 2.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Mitsubishi', 'L300', 2010, 3.6);
+insert into cars (Vendor, Model, Year, Engine) values ('BMW', 'X3', 2008, 4.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Land Rover', 'Range Rover', 2012, 1.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Buick', 'Skylark', 1991, 2.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Lotus', 'Elise', 2011, 2.8);
+insert into cars (Vendor, Model, Year, Engine) values ('GMC', 'Savana', 2000, 1.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Lexus', 'CT', 2019, 1.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Honda', 'Insight', 2004, 1.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Kia', 'Optima', 1997, 3.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Mitsubishi', 'Galant', 2009, 4.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Mitsubishi', 'Eclipse', 2019, 4.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'Bronco II', 2012, 2.9);
+insert into cars (Vendor, Model, Year, Engine) values ('Subaru', 'Alcyone SVX', 2017, 1.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Caravan', 1992, 3.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Ram Van 3500', 2016, 1.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercedes-Benz', 'SLK55 AMG', 2016, 2.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Lexus', 'IS-F', 2006, 2.1);
+insert into cars (Vendor, Model, Year, Engine) values ('BMW', '745', 2014, 4.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Honda', 'CR-V', 2013, 1.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Holden', 'VS Commodore', 2000, 3.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Lexus', 'IS', 2018, 4.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Lexus', 'RX Hybrid', 2004, 1.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Cadillac', 'Eldorado', 2001, 3.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Suzuki', 'Daewoo Magnus', 1992, 4.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Cadillac', 'STS', 1998, 3.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'Expedition', 2016, 4.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Jeep', 'Wrangler', 2003, 1.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Mazda', 'B-Series', 1997, 1.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Pontiac', 'Solstice', 2000, 3.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Express 3500', 2007, 2.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Caprice', 2016, 3.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Land Rover', 'Freelander', 2013, 3.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Jaguar', 'X-Type', 2019, 4.0);
+insert into cars (Vendor, Model, Year, Engine) values ('GMC', 'Sierra 1500', 2012, 2.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Subaru', 'Impreza', 2001, 2.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'Mustang', 1993, 1.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'Explorer', 1990, 4.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Subaru', 'Tribeca', 1992, 2.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'Escape', 1997, 2.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Subaru', 'Legacy', 2014, 2.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Subaru', 'BRZ', 1992, 4.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Pontiac', 'Grand Prix', 2004, 4.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Subaru', 'Forester', 1991, 2.1);
+insert into cars (Vendor, Model, Year, Engine) values ('MINI', 'Clubman', 2001, 4.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Suzuki', 'Grand Vitara', 2015, 4.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercury', 'Capri', 2016, 3.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Pontiac', 'G8', 1991, 2.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Volvo', 'XC70', 1994, 4.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Ram Van B350', 1990, 1.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Toyota', 'Avalon', 1991, 2.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Audi', 'S4', 2015, 3.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Kia', 'Rio', 2010, 1.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Land Rover', 'Range Rover', 2006, 2.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Porsche', '944', 1997, 3.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Kia', 'Sportage', 2020, 2.2);
+insert into cars (Vendor, Model, Year, Engine) values ('GMC', 'Savana 2500', 1993, 2.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Land Rover', 'Freelander', 2002, 3.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercedes-Benz', '190E', 2016, 1.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Buick', 'LeSabre', 1996, 1.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Lincoln', 'Navigator', 1993, 3.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Subaru', 'Impreza', 2013, 1.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Daytona', 2003, 3.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Jeep', 'Wrangler', 2005, 4.0);
+insert into cars (Vendor, Model, Year, Engine) values ('GMC', '2500 Club Coupe', 2010, 4.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Dakota Club', 2007, 1.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Express 2500', 2012, 2.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Mazda', 'Tribute', 2002, 2.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Kia', 'Sportage', 1995, 1.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Volkswagen', 'GLI', 1996, 3.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Toyota', 'RAV4', 1999, 4.8);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Corvette', 1997, 3.7);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Ram 1500', 2008, 1.1);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'Suburban', 2010, 4.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercedes-Benz', 'GLK-Class', 2017, 1.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Neon', 2000, 3.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Dodge', 'Viper RT/10', 2017, 1.1);
+insert into cars (Vendor, Model, Year, Engine) values ('BMW', 'X6', 2015, 3.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Pontiac', 'Trans Sport', 2009, 2.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Volkswagen', 'Passat', 2010, 4.3);
+insert into cars (Vendor, Model, Year, Engine) values ('Infiniti', 'QX', 2002, 3.4);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'F150', 2004, 4.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Nissan', 'Maxima', 2017, 4.5);
+insert into cars (Vendor, Model, Year, Engine) values ('Mercedes-Benz', 'C-Class', 1998, 4.6);
+insert into cars (Vendor, Model, Year, Engine) values ('Pontiac', 'G8', 2000, 2.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Mitsubishi', 'Pajero', 2003, 3.0);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'Fiesta', 2017, 2.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Chevrolet', 'K5 Blazer', 2012, 3.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Mazda', 'Mazda3', 2004, 4.2);
+insert into cars (Vendor, Model, Year, Engine) values ('Ford', 'Probe', 2000, 4.4);
+
+END</value>
+  </data>
+</root>
