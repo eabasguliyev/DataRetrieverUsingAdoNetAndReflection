@@ -26,10 +26,22 @@ namespace PopulatingTable_Using_AdoNet_Reflection
             sqlCommand.CommandText = "SELECT * FROM cars;";
 
 
-            DataRetriever<Car> dataRetriever = new DataRetriever<Car>(new SqlDataReaderAdapter(sqlCommand.ExecuteReader()));
+            var dataReader = sqlCommand.ExecuteReader();
+
+            var sqlDataReaderAdapter = new SqlDataReaderAdapter(dataReader);
+
+            DataRetriever<Car> dataRetriever = new DataRetriever<Car>(sqlDataReaderAdapter);
 
 
             printCars(dataRetriever.GetAllData());
+            
+            
+            //dataReader.Close();
+
+            //dataReader = sqlCommand.ExecuteReader();
+
+            //sqlDataReaderAdapter.UpdateDataReader(dataReader);
+
             //printCars(dataRetriever.GetAllData());
         }
 

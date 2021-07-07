@@ -12,11 +12,6 @@ namespace PopulatingTable_Using_AdoNet_Reflection
             _dataReader = dataReader ?? throw new InvalidOperationException("DataReader is null");
         }
 
-        public void UpdateDataReader(IDataReader dataReader)
-        {
-            _dataReader = dataReader;
-        }
-
         public IEnumerable<T> GetAllData()
         {
             if (!_dataReader.Read())

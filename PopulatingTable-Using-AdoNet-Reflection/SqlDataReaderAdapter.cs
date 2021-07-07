@@ -4,7 +4,7 @@ namespace PopulatingTable_Using_AdoNet_Reflection
 {
     public class SqlDataReaderAdapter:IDataReader
     {
-        private readonly SqlDataReader _dataReader;
+        private SqlDataReader _dataReader;
         public SqlDataReaderAdapter(SqlDataReader dataReader)
         {
             _dataReader = dataReader;
@@ -24,6 +24,11 @@ namespace PopulatingTable_Using_AdoNet_Reflection
         public void Dispose()
         {
             _dataReader?.Dispose();
+        }
+
+        public void UpdateDataReader(SqlDataReader dataReader)
+        {
+            _dataReader = dataReader;
         }
     }
 }
