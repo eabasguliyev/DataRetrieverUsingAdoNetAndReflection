@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace PopulatingTable_Using_AdoNet_Reflection
+namespace PopulatingTable_Using_AdoNet_Reflection.DbSchemaBuilder
 {
     public class TableBuilder
     {

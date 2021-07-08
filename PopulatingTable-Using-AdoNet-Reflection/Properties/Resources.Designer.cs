@@ -61,11 +61,20 @@ namespace PopulatingTable_Using_AdoNet_Reflection.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to data source = STHQ0125-18; initial catalog = cardb; User Id= &apos;admin&apos;; Password= &apos;admin&apos;;.
+        ///   Looks up a localized string similar to data source = .\SQLEXPRESS; initial catalog = cardb2; integrated security = SSPI;.
         /// </summary>
-        internal static string ConnectionString {
+        internal static string ConnectionStringHome {
             get {
-                return ResourceManager.GetString("ConnectionString", resourceCulture);
+                return ResourceManager.GetString("ConnectionStringHome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to data source = STHQ0125-18; initial catalog = cardb2; User Id= &apos;admin&apos;; Password= &apos;admin&apos;;.
+        /// </summary>
+        internal static string ConnectionStringStep {
+            get {
+                return ResourceManager.GetString("ConnectionStringStep", resourceCulture);
             }
         }
         
@@ -79,7 +88,7 @@ namespace PopulatingTable_Using_AdoNet_Reflection.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = &apos;cardb&apos;)
+        ///   Looks up a localized string similar to IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = &apos;cardb2&apos;)
         ///	BEGIN
         ///	CREATE DATABASE cardb;
         ///	END
@@ -91,7 +100,7 @@ namespace PopulatingTable_Using_AdoNet_Reflection.Properties {
         ///IF NOT EXISTS(SELECT * FROM cars)
         ///BEGIN
         ///insert into cars (Vendor, Model, Year, Engine) values (&apos;Land Rover&apos;, &apos;Range Rover&apos;, 2015, 1.4);
-        ///insert into cars (Vendor, Mod [rest of string was truncated]&quot;;.
+        ///insert into cars (Vendor, Mo [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SchemaQuery {
             get {

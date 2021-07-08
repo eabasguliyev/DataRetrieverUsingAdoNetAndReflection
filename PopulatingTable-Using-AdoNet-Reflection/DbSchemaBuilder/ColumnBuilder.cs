@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace PopulatingTable_Using_AdoNet_Reflection
+namespace PopulatingTable_Using_AdoNet_Reflection.DbSchemaBuilder
 {
     public class ColumnBuilder
     {
@@ -18,12 +18,18 @@ namespace PopulatingTable_Using_AdoNet_Reflection
             return this;
         }
 
-        public ColumnBuilder SetColumnType(DataType dataType, int length = 0)
+        public ColumnBuilder SetColumnType(DataType dataType, int length = -1)
         {
             _str.Append($" {dataType.ToString().ToUpper()}");
 
             if (dataType == DataType.Varchar)
-                _str.Append($"({length})");
+            {
+                if (length == -1)
+                    // max length of varchar
+                    _str.Append("(MAX)");
+                else
+                    _str.Append($"({length})");
+            }
             else if (dataType == DataType.Decimal)
                 _str.Append($"(18, 5)");
             return this;

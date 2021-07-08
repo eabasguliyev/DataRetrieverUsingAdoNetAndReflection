@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Resources;
+using PopulatingTable_Using_AdoNet_Reflection.DbManager;
+using PopulatingTable_Using_AdoNet_Reflection.Entities;
 using PopulatingTable_Using_AdoNet_Reflection.Properties;
 
 namespace PopulatingTable_Using_AdoNet_Reflection
@@ -10,6 +11,8 @@ namespace PopulatingTable_Using_AdoNet_Reflection
     {
         static void Main(string[] args)
         {
+            // change numeric decimal separator from ',' to '.'
+
             System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
             customCulture.NumberFormat.NumberDecimalSeparator = ".";
 
@@ -19,47 +22,21 @@ namespace PopulatingTable_Using_AdoNet_Reflection
 
             using var sqlConnection = new SqlConnection();
 
-            sqlConnection.ConnectionString = Resources.ResourceManager.GetString("ConnectionString");
+            sqlConnection.ConnectionString = Resources.ResourceManager.GetString("ConnectionStringHome");
 
             sqlConnection.Open();
 
             Console.WriteLine(sqlConnection.State);
 
-            //using var sqlCommand = new SqlCommand();
-
-            //sqlCommand.Connection = sqlConnection;
-
-            //sqlCommand.CommandText = "SELECT * FROM cars;";
-
-
-            //var dataReader = sqlCommand.ExecuteReader();
-
-            //var sqlDataReaderAdapter = new SqlDataReaderAdapter(dataReader);
-
-            //DataRetriever<Car> dataRetriever = new DataRetriever<Car>(sqlDataReaderAdapter);
-
-
-            //printCars(dataRetriever.GetAllData());
-
-
-            //dataReader.Close();
-
-            //dataReader = sqlCommand.ExecuteReader();
-
-            //sqlDataReaderAdapter.UpdateDataReader(dataReader);
-
-            //printCars(dataRetriever.GetAllData());
-
-
             var manager = new DatabaseManager(sqlConnection);
 
             manager.CreateTableSchema<Car>();
+            Console.WriteLine("Schema created or already exists.");
 
             var cars = new List<Car>()
             {
                 new Car()
                 {
-                    Id = 1,
                     Model = "X5",
                     Vendor = "BMW",
                     Engine = 4.2f,
@@ -67,7 +44,6 @@ namespace PopulatingTable_Using_AdoNet_Reflection
                 },
                 new Car()
                 {
-                    Id = 2,
                     Model = "F10",
                     Vendor = "BMW",
                     Engine = 5f,
@@ -78,6 +54,13 @@ namespace PopulatingTable_Using_AdoNet_Reflection
             var dataPopulate = new DataPopulate(sqlConnection);
 
             Console.WriteLine(dataPopulate.PopulateTable<Car>(cars));
+
+            var dataRetriever = new DataRetriever(sqlConnection);
+
+            var cars2 = dataRetriever.GetAllData<Car>();
+
+
+            printCars(cars2);
         }
 
         private static void printCars(IEnumerable<Car> cars)
@@ -90,6 +73,8 @@ namespace PopulatingTable_Using_AdoNet_Reflection
             }
         }
 
+
+        // not used.
         private static void prepareDatabase()
         {
             using var sqlConnection = new SqlConnection();

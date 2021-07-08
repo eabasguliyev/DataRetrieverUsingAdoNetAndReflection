@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Data.SqlClient;
 
-namespace PopulatingTable_Using_AdoNet_Reflection
+namespace PopulatingTable_Using_AdoNet_Reflection.DbManager
 {
     public class DataPopulate
     {
-        SqlConnection _sqlConnection;
+        readonly SqlConnection _sqlConnection;
         public DataPopulate(SqlConnection sqlConnection)
         {
             _sqlConnection = sqlConnection;

@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Reflection;
 using System.Text;
+using PopulatingTable_Using_AdoNet_Reflection.CustomAttributes;
 
-namespace PopulatingTable_Using_AdoNet_Reflection
+namespace PopulatingTable_Using_AdoNet_Reflection.DbManager
 {
     public class BulkDataCreator
     {
-
         public string CreateBulkDataQuery<T>(List<T> collection) where T:new()
         {
             var typeOfObj = (new T()).GetType();
@@ -21,7 +22,7 @@ namespace PopulatingTable_Using_AdoNet_Reflection
             builder.Append(tableName + "(");
 
 
-            for (int i = 0, length = properties.Length; i < length; i++)
+            for (int i = (typeOfObj.GetProperty("Id").GetCustomAttribute((new DatabaseGeneratedAttribute()).GetType()) == null) ? 0:1, length = properties.Length; i < length; i++)
             {
                 builder.Append(properties[i].Name.ToLower(new CultureInfo("es-ES", false)));
 
@@ -52,7 +53,7 @@ namespace PopulatingTable_Using_AdoNet_Reflection
 
                 var properties = typeOfObj.GetProperties();
 
-                for (int j = 0, length2 = properties.Length; j < length2; j++)
+                for (int j = (typeOfObj.GetProperty("Id").GetCustomAttribute((new DatabaseGeneratedAttribute()).GetType()) == null) ? 0 : 1, length2 = properties.Length; j < length2; j++)
                 {
                     var propertyType = properties[j].PropertyType.Name.ToString();
 
