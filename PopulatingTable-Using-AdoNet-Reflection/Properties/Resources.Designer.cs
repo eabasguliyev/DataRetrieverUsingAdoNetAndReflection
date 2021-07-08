@@ -61,7 +61,7 @@ namespace PopulatingTable_Using_AdoNet_Reflection.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to data source = .\SQLEXPRESS; initial catalog = cardb; integrated security = SSPI;.
+        ///   Looks up a localized string similar to data source = STHQ0125-18; initial catalog = cardb; User Id= &apos;admin&apos;; Password= &apos;admin&apos;;.
         /// </summary>
         internal static string ConnectionString {
             get {

@@ -7,7 +7,7 @@ namespace PopulatingTable_Using_AdoNet_Reflection
         public int Id { get; set; }
         public string Vendor { get; set; }
         public string Model { get; set; }
-        public decimal Engine { get; set; }
+        public float Engine { get; set; }
         public int Year { get; set; }
 
         public override string ToString()

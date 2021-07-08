@@ -10,7 +10,12 @@ namespace PopulatingTable_Using_AdoNet_Reflection
     {
         static void Main(string[] args)
         {
-            prepareDatabase();
+            System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
+            customCulture.NumberFormat.NumberDecimalSeparator = ".";
+
+            System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
+
+            //prepareDatabase();
 
             using var sqlConnection = new SqlConnection();
 
@@ -18,24 +23,25 @@ namespace PopulatingTable_Using_AdoNet_Reflection
 
             sqlConnection.Open();
 
+            Console.WriteLine(sqlConnection.State);
 
-            using var sqlCommand = new SqlCommand();
+            //using var sqlCommand = new SqlCommand();
 
-            sqlCommand.Connection = sqlConnection;
+            //sqlCommand.Connection = sqlConnection;
 
-            sqlCommand.CommandText = "SELECT * FROM cars;";
-
-
-            var dataReader = sqlCommand.ExecuteReader();
-
-            var sqlDataReaderAdapter = new SqlDataReaderAdapter(dataReader);
-
-            DataRetriever<Car> dataRetriever = new DataRetriever<Car>(sqlDataReaderAdapter);
+            //sqlCommand.CommandText = "SELECT * FROM cars;";
 
 
-            printCars(dataRetriever.GetAllData());
-            
-            
+            //var dataReader = sqlCommand.ExecuteReader();
+
+            //var sqlDataReaderAdapter = new SqlDataReaderAdapter(dataReader);
+
+            //DataRetriever<Car> dataRetriever = new DataRetriever<Car>(sqlDataReaderAdapter);
+
+
+            //printCars(dataRetriever.GetAllData());
+
+
             //dataReader.Close();
 
             //dataReader = sqlCommand.ExecuteReader();
@@ -43,6 +49,35 @@ namespace PopulatingTable_Using_AdoNet_Reflection
             //sqlDataReaderAdapter.UpdateDataReader(dataReader);
 
             //printCars(dataRetriever.GetAllData());
+
+
+            var manager = new DatabaseManager(sqlConnection);
+
+            manager.CreateTableSchema<Car>();
+
+            var cars = new List<Car>()
+            {
+                new Car()
+                {
+                    Id = 1,
+                    Model = "X5",
+                    Vendor = "BMW",
+                    Engine = 4.2f,
+                    Year = 2020
+                },
+                new Car()
+                {
+                    Id = 2,
+                    Model = "F10",
+                    Vendor = "BMW",
+                    Engine = 5f,
+                    Year = 2019
+                }
+            };
+
+            var dataPopulate = new DataPopulate(sqlConnection);
+
+            Console.WriteLine(dataPopulate.PopulateTable<Car>(cars));
         }
 
         private static void printCars(IEnumerable<Car> cars)

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ConnectionString" xml:space="preserve">
-    <value>data source = .\SQLEXPRESS; initial catalog = cardb; integrated security = SSPI;</value>
+    <value>data source = STHQ0125-18; initial catalog = cardb; User Id= 'admin'; Password= 'admin';</value>
   </data>
   <data name="MasterConnectionString" xml:space="preserve">
     <value>data source = .\SQLEXPRESS; integrated security = SSPI;</value>
