@@ -17,7 +17,6 @@ namespace PopulatingTable_Using_AdoNet_Reflection.Entities
         public string Model { get; set; }
         public float Engine { get; set; }
         
-        
         public int Year { get; set; }
 
         public override string ToString()

@@ -22,7 +22,7 @@ namespace PopulatingTable_Using_AdoNet_Reflection.DbManager
             builder.Append(tableName + "(");
 
 
-            for (int i = (typeOfObj.GetProperty("Id").GetCustomAttribute((new DatabaseGeneratedAttribute()).GetType()) == null) ? 0:1, length = properties.Length; i < length; i++)
+            for (int i = (CheckIdentity(typeOfObj)) ? 0:1, length = properties.Length; i < length; i++)
             {
                 builder.Append(properties[i].Name.ToLower(new CultureInfo("es-ES", false)));
 
@@ -33,15 +33,13 @@ namespace PopulatingTable_Using_AdoNet_Reflection.DbManager
             builder.Append(") VALUES");
 
 
-            builder.Append(GetBulkData(collection));
+            builder.Append(PrepareBulkData(collection));
             builder.Append(";");
-
-            Console.WriteLine(builder.ToString());
 
             return builder.ToString();
         }
 
-        private string GetBulkData<T>(List<T> collection) where T : new()
+        private string PrepareBulkData<T>(List<T> collection) where T : new()
         {
             var builder = new StringBuilder();
 
@@ -53,7 +51,7 @@ namespace PopulatingTable_Using_AdoNet_Reflection.DbManager
 
                 var properties = typeOfObj.GetProperties();
 
-                for (int j = (typeOfObj.GetProperty("Id").GetCustomAttribute((new DatabaseGeneratedAttribute()).GetType()) == null) ? 0 : 1, length2 = properties.Length; j < length2; j++)
+                for (int j = (CheckIdentity(typeOfObj)) ? 0 : 1, length2 = properties.Length; j < length2; j++)
                 {
                     var propertyType = properties[j].PropertyType.Name.ToString();
 
@@ -78,6 +76,11 @@ namespace PopulatingTable_Using_AdoNet_Reflection.DbManager
                     builder.Append(", ");
             }
             return builder.ToString();
+        }
+
+        private bool CheckIdentity(Type typeOfObj, string propertyName = "Id")
+        {
+            return typeOfObj?.GetProperty("Id").GetCustomAttribute((new DatabaseGeneratedAttribute()).GetType()) == null;
         }
     }
 }

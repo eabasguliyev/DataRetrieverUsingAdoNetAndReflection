@@ -4,23 +4,27 @@ using System.Data.SqlClient;
 
 namespace PopulatingTable_Using_AdoNet_Reflection.DbManager
 {
-    public class DataRetriever
+    public class DataRetriever:IDisposable
     {
         private readonly SqlConnection _sqlConnection;
+        private readonly SqlCommand _sqlCommand;
 
         public DataRetriever(SqlConnection sqlConnection)
         {
             _sqlConnection = sqlConnection ??
                              throw new ArgumentNullException(nameof(sqlConnection), "SqlConnection is null");
+
+            _sqlCommand = new SqlCommand();
+            _sqlCommand.Connection = _sqlConnection;
         }
 
         public IEnumerable<T> GetAllData<T>() where T : new()
         {
             var str = GetSelectionQuery((new T().GetType()));
 
-            using var sqlCommand = new SqlCommand(str, _sqlConnection);
+            _sqlCommand.CommandText = str;
 
-            var dataReader = sqlCommand.ExecuteReader();
+            var dataReader = _sqlCommand.ExecuteReader();
 
             List<T> collection = new List<T>();
 
@@ -47,6 +51,12 @@ namespace PopulatingTable_Using_AdoNet_Reflection.DbManager
         private string GetSelectionQuery(Type typeOfObj)
         {
             return $"SELECT * FROM {typeOfObj.Name.ToLower() + "s"};";
+        }
+
+        public void Dispose()
+        {
+            _sqlConnection?.Dispose();
+            _sqlCommand?.Dispose();
         }
     }
 }

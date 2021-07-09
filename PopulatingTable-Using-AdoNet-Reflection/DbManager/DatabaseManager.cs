@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.SqlClient;
 using System.Globalization;
@@ -8,27 +9,25 @@ using PopulatingTable_Using_AdoNet_Reflection.DbSchemaBuilder;
 
 namespace PopulatingTable_Using_AdoNet_Reflection.DbManager
 {
-    public class DatabaseManager
+    public class DatabaseManager:IDisposable
     {
         private readonly SqlConnection _sqlConnection;
+        private readonly SqlCommand _sqlCommand;
         public DatabaseManager(SqlConnection sqlConnection)
         {
             _sqlConnection = sqlConnection ??
                              throw new ArgumentNullException(nameof(sqlConnection), "SqlConnection is null");
+            _sqlCommand = new SqlCommand();
+            _sqlCommand.Connection = _sqlConnection;
         }
 
         public void CreateTableSchema<T>() where T : new()
         {
             var schemaStr = CreateTable((new T()).GetType());
 
-            var sqlCommand = new SqlCommand();
+            _sqlCommand.CommandText = schemaStr;
 
-            sqlCommand.Connection = _sqlConnection;
-
-            sqlCommand.CommandText = schemaStr;
-
-            Console.WriteLine(schemaStr);
-            sqlCommand.ExecuteNonQuery();   
+            _sqlCommand.ExecuteNonQuery();   
           
         }
 
@@ -36,7 +35,6 @@ namespace PopulatingTable_Using_AdoNet_Reflection.DbManager
         {
             var properties = typeOfObj.GetProperties();
 
-            
             var tableBuilder = new TableBuilder();
 
             var tableName = typeOfObj.Name.ToLower() + 's';
@@ -62,6 +60,52 @@ namespace PopulatingTable_Using_AdoNet_Reflection.DbManager
 
             columnBuilder.SetColumnName(propertyName);
 
+            SetColumnType(propertyInfo, propertyType, columnBuilder);
+
+            var customAttributes = propertyInfo.GetCustomAttributes();
+
+            SetColumnConstraints(customAttributes, columnBuilder, propertyType);
+
+            return columnBuilder.Build();
+        }
+
+        private static void SetColumnConstraints(IEnumerable<Attribute> customAttributes, ColumnBuilder columnBuilder, string propertyType)
+        {
+            foreach (var customAttribute in customAttributes)
+            {
+                switch (customAttribute.GetType().Name)
+                {
+                    case "KeyAttribute":
+                        columnBuilder.SetPrimaryKey();
+                        break;
+                    case "DatabaseGeneratedAttribute":
+                    {
+                        var option =
+                            (DatabaseGeneratedOption) customAttribute.GetType().GetProperty("Option").GetValue(customAttribute);
+
+
+                        if (option == DatabaseGeneratedOption.Identity)
+                        {
+                            if (propertyType != "Int32" && propertyType != "Int16" && propertyType != "Byte")
+                                throw new InvalidEnumArgumentException("Non-numeric values can not be identity column!");
+
+                            columnBuilder.SetIdentity();
+                        }
+
+                        break;
+                    }
+                    case "RequiredAttribute":
+                        columnBuilder.SetNotNull();
+                        break;
+                    case "ExcludeAttribute":
+                        throw new NotImplementedException();
+                        break;
+                }
+            }
+        }
+
+        private static void SetColumnType(PropertyInfo propertyInfo, string propertyType, ColumnBuilder columnBuilder)
+        {
             switch (propertyType)
             {
                 case "Int32":
@@ -74,9 +118,9 @@ namespace PopulatingTable_Using_AdoNet_Reflection.DbManager
 
                     if (stringAttribute != null)
                     {
-                        length = (int)stringAttribute.GetType().GetProperty("Length").GetValue(stringAttribute);
+                        length = (int) stringAttribute.GetType().GetProperty("Length").GetValue(stringAttribute);
                     }
-                    
+
                     columnBuilder.SetColumnType(DataType.Varchar, length);
                     break;
                 }
@@ -92,39 +136,12 @@ namespace PopulatingTable_Using_AdoNet_Reflection.DbManager
                 default:
                     throw new InvalidOperationException("Unknown data type.");
             }
-
-            var customAttributes = propertyInfo.GetCustomAttributes();
-
-            foreach (var customAttribute in customAttributes)
-            {
-                switch (customAttribute.GetType().Name)
-                {
-                    case "KeyAttribute":
-                        columnBuilder.SetPrimaryKey();
-                        break;
-                    case "DatabaseGeneratedAttribute":
-                    {
-                        var option = (DatabaseGeneratedOption)customAttribute.GetType().GetProperty("Option").GetValue(customAttribute);
-
-
-                        if (option == DatabaseGeneratedOption.Identity)
-                        {
-                            if (propertyType != "Int32")
-                                throw new InvalidEnumArgumentException("Non numeric values can not be identity column!");
-
-                            columnBuilder.SetIdentity();
-                        }
-
-                        break;
-                    }
-                    case "RequiredAttribute":
-                        columnBuilder.SetNotNull();
-                        break;
-                }
-            }
-
-            return columnBuilder.Build();
         }
 
+        public void Dispose()
+        {
+            _sqlConnection?.Dispose();
+            _sqlCommand?.Dispose();
+        }
     }
 }

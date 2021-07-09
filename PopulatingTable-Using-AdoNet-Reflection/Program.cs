@@ -20,15 +20,19 @@ namespace PopulatingTable_Using_AdoNet_Reflection
 
             //prepareDatabase();
 
-            using var sqlConnection = new SqlConnection();
+            using var sqlConnection = new SqlConnection
+            {
+                ConnectionString = Resources.ResourceManager.GetString("ConnectionStringHome")
+            };
 
-            sqlConnection.ConnectionString = Resources.ResourceManager.GetString("ConnectionStringHome");
 
             sqlConnection.Open();
 
             Console.WriteLine(sqlConnection.State);
 
-            var manager = new DatabaseManager(sqlConnection);
+            // Creates table of Car
+
+            using DatabaseManager manager = new DatabaseManager(sqlConnection);
 
             manager.CreateTableSchema<Car>();
             Console.WriteLine("Schema created or already exists.");
@@ -51,16 +55,24 @@ namespace PopulatingTable_Using_AdoNet_Reflection
                 }
             };
 
-            var dataPopulate = new DataPopulate(sqlConnection);
 
-            Console.WriteLine(dataPopulate.PopulateTable<Car>(cars));
+            // Populates table of Car
 
-            var dataRetriever = new DataRetriever(sqlConnection);
+            using DataPopulate dataPopulate = new DataPopulate(sqlConnection);
+            
+            if(dataPopulate.PopulateTable<Car>(cars))
+                Console.WriteLine("Table populated.");
+
+
+            // Loads Car table to memory and print
+            using DataRetriever dataRetriever = new DataRetriever(sqlConnection);
 
             var cars2 = dataRetriever.GetAllData<Car>();
 
 
             printCars(cars2);
+
+            Console.WriteLine(sqlConnection.State);
         }
 
         private static void printCars(IEnumerable<Car> cars)

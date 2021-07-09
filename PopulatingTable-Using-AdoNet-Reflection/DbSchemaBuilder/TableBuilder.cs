@@ -7,12 +7,13 @@ namespace PopulatingTable_Using_AdoNet_Reflection.DbSchemaBuilder
         private readonly StringBuilder _str;
 
         private bool _firstColumn;
-
+        private bool _firstBuild;
         public TableBuilder()
         {
             _str = new StringBuilder();
 
             _firstColumn = true;
+            _firstBuild = true;
         }
 
         public TableBuilder SetIfNotExist(string tableName)
@@ -40,7 +41,12 @@ namespace PopulatingTable_Using_AdoNet_Reflection.DbSchemaBuilder
 
         public string Build()
         {
-            _str.Append(");");
+            if(_firstBuild)
+            {
+                _str.Append(");");
+                _firstBuild = false;
+            }
+
             return _str.ToString();
         }
     }
